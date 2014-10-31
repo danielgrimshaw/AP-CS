@@ -99,6 +99,7 @@ public class GrimshawGuess {
    }
    
    public static void printStats() {
+      //prints the statistics
       System.out.println("\nOverall results:");
       System.out.println("\ttotal games\t= "+gamesPlayed);
       System.out.println("\ttotal guesses\t= "+guessesMade);
