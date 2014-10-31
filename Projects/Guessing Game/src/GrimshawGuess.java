@@ -71,19 +71,27 @@ public class GrimshawGuess {
       playGame(console);
       while (playAgain(console))
          playGame(console);
+      //print their statistics after they finish playing
       printStats();
    }
    
    public static boolean playAgain(Scanner cnsl) {
+      //ask if the user would like to play again.
+      //get user input
       System.out.print("Play Again? ");
       String ans = cnsl.next();
       while (true) {
-         cnsl.nextLine();
+         //loops infinately until answer either starts with Y, y, n, or N
+         cnsl.nextLine(); //clears the buffer (if user enters a multi-token
+         // answer, such as "Yes I would like to play again!", then the input 
+         // stream would already be filled when we next call cnsl.nextInt() in
+         // playGame(), which would cause an exception.
          if (ans.startsWith("y") || ans.startsWith("Y"))
             return true;
          else if (ans.startsWith("n") || ans.startsWith("N"))
             return false;
          else {
+            //input was not valid, ask again.
             System.out.print("Play Again? ");
             ans = cnsl.next();
          }
