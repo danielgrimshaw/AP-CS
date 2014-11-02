@@ -12,18 +12,25 @@ public class GrimshawRockPaperScissors {
    public static int getGames(Scanner cnsl) {
       System.out.print("Best out of how many games (must be odd)? ");
       totalGames = cnsl.nextInt();
-      if (games % 2 == 0 || games <= 0) {
+      if (totalGames % 2 == 0 || totalGames <= 0) {
          System.out.println("Invalid number of games. Type a positive odd number!");
          return getGames(cnsl);
       }
+      return totalGames;
    }
    
    public static boolean isAnotherGame(int game) {
       return game <= totalGames;
    }
    
-   public static void playGame(int game) {
-      String wea
+   public static int getWeapon(Scanner cnsl) {
+	  System.out.print("Choose your weapon? ");
+	  String weapon = cnsl.next();
+	  return -1;
+   }
+	  
+   public static void playGame(int game, Scanner console) {
+      int weapon = getWeapon(console);
    }
    
    public static void logStats() {
@@ -31,11 +38,15 @@ public class GrimshawRockPaperScissors {
    }
    
    public static int getLevel(Scanner cnsl) {
-      
+      return -1;
    }
    
    public static void printStats() {
       
+   }
+   
+   public static boolean playAgain(Scanner console) { 
+	   return false;  
    }
    
    public static void play() {
@@ -44,11 +55,11 @@ public class GrimshawRockPaperScissors {
       getGames(console);
       int game = 1;
       while (isAnotherGame(game))
-         playGame(game);
+         playGame(game, console);
       while (playAgain(console)) {
          game = 1;
          while (isAnotherGame(game))
-            playGame(game);
+            playGame(game, console);
       }
       
       

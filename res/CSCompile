@@ -1,0 +1,41 @@
+#!/bin/bash
+
+function quit() {
+    echo "Ending Now"
+    unset file
+    exit 0
+}
+
+function getFile() {
+    echo -e "\nFile:"
+    read file
+    case $file in
+        $falsevariable)
+            echo "Invallid Syntax!"
+            echo -e "Syntax: JCompile filename.java"
+            getFile;;
+        quit)
+            quit;;
+        *)
+            compile;;
+    esac
+}
+
+function compile() {
+    echo -e "\nCompiling...\n"
+    javac -d ../bin -verbose $file
+    echo -e "\n\nCompilation Complete\n"
+    unset file
+    exit 0
+}
+
+case $1 in
+    $falsevariable)
+        echo "Invallid Syntax!"
+        echo -e "Syntax: JCompile filename.java"
+        getFile;;
+    *)
+        file=$1
+        compile;;
+esac
+
