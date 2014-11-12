@@ -28,17 +28,23 @@ public class GrimshawTechniques {
       // Declares a variable called points, 
       // that refers to an array of length 3
       // that stores references to Point objects
+      Point [] points = new Point[3];
+      System.out.println(Arrays.toString(points));
    
    
       // After declare points, have null in 
       // element locations [0], [1], and [2].
       // Now construct the Point objects.
-     
+      points[0] = new Point(3,5);
+      points[1] = new Point(-1, 10);
+      points[2] = new Point(-5,-3);
+      System.out.println(Arrays.toString(points));
+
       
       // Also can use the quick array 
       // initialization approach
-   
-   
+      Point [] points2 = {new Point()};
+      System.out.println(Arrays.toString(points2)); 
    }
 
 
