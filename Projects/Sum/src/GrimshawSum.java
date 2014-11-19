@@ -1,5 +1,7 @@
 public class GrimshawSum {
-   public static void main() {
+   public static final int ARRAY_SIZE = 25;
+   
+   public static void main(String[] args) {
       String nums[] = {"82384 ", 
                        "204 435 ",
                        "22 31 12 ",
@@ -22,23 +24,24 @@ public class GrimshawSum {
          int words = getInstancesOf(" ", s);
          String [] strings = new String[words];
          getStrings(strings, s);
-         int [][] numbers = new int [words][25];
+         int [][] numbers = new int [words][ARRAY_SIZE];
          for (int i = 0; i < strings.length; i++)
-            numbers[
+            numbers[i] = generateIntArray(strings[i]);
+         
       }
    }
    
    public static void getStrings(String [] strings, String s) {
-      for (int i = 0; i < strings.length(); i++) {
+      for (int i = 0; i < strings.length; i++) {
          strings[i] = s.substring(0, s.indexOf(" "));
-         s = s.substring(s.indexOf(" ");
+         s = s.substring(s.indexOf(" "));
       }
    }
    
    public static int getInstancesOf(String pattern, String source) {
       int ans = 0;
       while (!source.equals(" ")) {
-         source = source.substring(indexOf(pattern));
+         source = source.substring(source.indexOf(pattern));
          ans++;
       }
       return ans;
@@ -49,10 +52,17 @@ public class GrimshawSum {
       int [] ans = new int [number.length()];
       int i = 0;
       while (num != 0) {
-         ans[ans.length-i] = num % 10;
+         ans[ans.length-i-1] = num % 10;
          num /= 10;
-         i--;
+         i++;
       }
+      return addBuffer(ans);
+   }
+   
+   public static int [] addBuffer(int [] number) {
+      int [] ans = new int[ARRAY_SIZE];
+      for (int i = 0; i < number.length; i++)
+         ans[ARRAY_SIZE-i-1] = number[number.length-i-1];
       return ans;
    }
 }
