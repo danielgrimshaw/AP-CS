@@ -28,9 +28,7 @@ public class GrimshawSum {
          for (int i = 0; i < strings.length; i++)
             numbers[i] = generateIntArray(strings[i]);
          for (int i =0; i < numbers.length; i++) {
-            for (int j : numbers[i]) {
-               System.out.print(i);
-            }
+            System.out.print(toString(numbers[i]);
             if (i < numbers.length-1)
                System.out.print(" + ");
          }
@@ -39,12 +37,24 @@ public class GrimshawSum {
    }
    
    public static int [] add(int [][] numbers){
-      return numbers[0];
+      int [] ans = new int[ARRAY_SIZE];
+      int carry = 0;
+      for (int i = ARRAY_SIZE-1; i >= 0; i--) {
+         int sum = 0;
+         for (int [] array : number)
+            sum += array[i];
+         sum += carry;
+         ans[i] = sum %10;
+         carry = sum/10;
+      }
    }
    
    public static String toString(int [] number) {
-      String str = new String;
-      
+      String str = new String();
+      for (int i : number)
+         str += new String(i);
+      return str;
+   }
    
    public static void getStrings(String [] strings, String s) {
       for (int i = 0; i < strings.length; i++) {
