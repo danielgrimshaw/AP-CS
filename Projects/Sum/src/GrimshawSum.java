@@ -20,6 +20,7 @@ public class GrimshawSum {
    }
    
    public static void processStrings(String[] nums) {
+      int lineCount = 0;
       for (String s : nums) {
          int words = getInstancesOf(" ", s);
          String [] strings = new String[words];
@@ -28,12 +29,14 @@ public class GrimshawSum {
          for (int i = 0; i < strings.length; i++)
             numbers[i] = generateIntArray(strings[i]);
          for (int i =0; i < numbers.length; i++) {
-            System.out.print(toString(numbers[i]);
+            System.out.print(toString(numbers[i]));
             if (i < numbers.length-1)
                System.out.print(" + ");
          }
          System.out.println(" = "+toString(add(numbers)));
+         lineCount++;
       }
+      System.out.println("Total lines: "+lineCount);
    }
    
    public static int [] add(int [][] numbers){
@@ -41,46 +44,45 @@ public class GrimshawSum {
       int carry = 0;
       for (int i = ARRAY_SIZE-1; i >= 0; i--) {
          int sum = 0;
-         for (int [] array : number)
+         for (int [] array : numbers)
             sum += array[i];
          sum += carry;
          ans[i] = sum %10;
          carry = sum/10;
       }
+      return ans;
    }
    
    public static String toString(int [] number) {
       String str = new String();
-      for (int i : number)
-         str += new String(i);
+      for (int i = 0; i < number.length; i++) {
+         while (i < ARRAY_SIZE-1 && number[i] == 0)
+            i++;
+         str += number[i];
+      }
       return str;
    }
    
    public static void getStrings(String [] strings, String s) {
       for (int i = 0; i < strings.length; i++) {
          strings[i] = s.substring(0, s.indexOf(" "));
-         s = s.substring(s.indexOf(" "));
+         s = s.substring(s.indexOf(" ")+1);
       }
    }
    
    public static int getInstancesOf(String pattern, String source) {
       int ans = 0;
-      while (!source.equals(" ")) {
-         source = source.substring(source.indexOf(pattern));
+      while (!source.equals("")) {
+         source = source.substring(source.indexOf(pattern)+1);
          ans++;
       }
       return ans;
    }
    
    public static int [] generateIntArray(String number)  {
-      int num = Integer.parseInt(number);
       int [] ans = new int [number.length()];
-      int i = 0;
-      while (num != 0) {
-         ans[ans.length-i-1] = num % 10;
-         num /= 10;
-         i++;
-      }
+      for (int i = 0; i < number.length(); i++)
+         ans[i] = number.charAt(i)-'0';
       return addBuffer(ans);
    }
    
