@@ -100,7 +100,7 @@ public class GrimshawSum {
       while (!source.equals("")) {//while source hasn't been fully truncated
          source = source.substring(source.indexOf(pattern)+1); //delete up to and including the first occurance of pattern
          ans++; //unfortunately, implementing this in this way forces ans to be at least one
-                //however, if we have a String with no arguements, the code should not work.
+                //however, if we have a String with no arguements, all of the code will not work.
       }
       return ans; //returns the count
    }
