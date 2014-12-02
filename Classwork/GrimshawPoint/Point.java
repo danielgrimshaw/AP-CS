@@ -15,26 +15,38 @@ public class Point {
    }
    
    public Point(int x) {
-      setX(x);
-      setY(0);
+      this.setX(x);
+      this.setY(0);
    }
    
    public Point(int x, int y) {
-      setPoint(x, y);
+      this.setPoint(x, y);
    }
    
    //instance methods
    public int getX() {
-      return x;
+      return this.x;
    }
    
    public int getY() {
-      return y;
+      return this.y;
    }
    
    public int [] getPoint() {
-      int [] ret = {x, y};
+      int [] ret = {this.x, this.y};
       return ret;
+   }
+   
+   public String getPointStr() {
+      return this.toString();
+   }
+   
+   public double distanceFromOrigin() {
+      return Math.sqrt(this.x*this.x + this.y*this.y);
+   }
+   
+   public double distanceFrom(int otherX, int otherY) {
+      return Math.sqrt((this.x - otherX)*(this.x - otherX) + (this.y - otherY)*(this.y - otherY));
    }
    
    public void setX(int newX) {
@@ -46,11 +58,11 @@ public class Point {
    }
    
    public void setPoint() {
-      setPoint(0);
+      this.setPoint(0);
    }
    
    public void setPoint(int x) {
-      setPoint(x, getY());
+      this.setPoint(x, this.getY());
    }
    
    public void setPoint(int x, int y) {
@@ -59,23 +71,31 @@ public class Point {
    }
    
    public void shiftPoint(int x, int y) {
-      setPoint(getX()+x, getY()+y);
+      this.setPoint(this.getX()+x, this.getY()+y);
    }
    
    public void shiftRight(int distance) {
-      setX(getX()+distance);
+      this.setX(this.getX()+distance);
    }
    
    public void shiftLeft(int distance) {
-      shiftRight(-distance);
+      this.shiftRight(-distance);
    }
    
    public void shiftUp(int distance) {
-      setY(getY()+distance);
+      this.setY(this.getY()+distance);
    }
    
    public void shiftDown(int distance) {
-      shiftUp(-distance);
+      this.shiftUp(-distance);
+   }
+   
+   public void translate(int xDistance, int yDistance) {
+      this.shiftPoint(xDistance, yDistance);
+   }
+   
+   public boolean equals(Point p) {
+      return (this.x == p.getX() && this.y == p.getY());
    }
    
    public int [] toArray() {
