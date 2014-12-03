@@ -91,6 +91,8 @@ public class Point {
    }
    
    public double slope(int otherX, int otherY) {
+      if (otherX - this.x == 0)
+         throw new IllegalArgumentException("Slope is undefined");
       return (double)(otherY - this.y)/(otherX - this.x);
    }
    
@@ -165,8 +167,8 @@ public class Point {
    }
    
    public String toString() {
-      String ret = "	Point[x=";
-      ret += x+", y=";
+      String ret = "(";
+      ret += x+", ";
       ret += y+")";
       return ret;
    }
