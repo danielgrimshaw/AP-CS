@@ -24,6 +24,22 @@ public class Line {
       return this.end;
    }
    
+   public int getX1() {
+      return this.start.getX();
+   }
+   
+   public int getY1() {
+      return this.start.getY();
+   }
+   
+   public int getX2() {
+      return this.end.getX();
+   }
+   
+   public int getY2() {
+      return this.end.getY();
+   }
+   
    public double getSlope() {
       return this.start.slope(this.end);
    }

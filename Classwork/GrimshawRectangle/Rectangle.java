@@ -11,23 +11,51 @@ public class Rectangle {
    
    //constructors
    public Rectangle() {
-      this(defaultX, defaultY, defaultWidth, defaultHeight);
+      setPos(defaultX, defaultY, defaultWidth, defaultHeight);
    }
    
    public Rectangle(int x) {
       //this actually makes a square
-      this(x, defaultY, defaultWidth, defaultHeight);
+      setPos(x, defaultY, defaultWidth, defaultHeight);
    }
    
    public Rectangle(int x, int y) {
-      this(x, y, defaultWidth, defaultHeight);
+      setPos(x, y, defaultWidth, defaultHeight);
    }
    
    public Rectangle(int x, int y, int sides) {
-      this(x, y, sides, sides);
+      setPos(x, y, sides, sides);
    }
    
    public Rectangle(int x, int y, int width, int height) {
+      setPos(int x, int y, width, height);
+   }
+   
+   public Rectangle(Point bottomLeft, int sides) {
+      this(bottomLeft.getX(), bottomLeft.getY(), sides, sides);
+   }
+   
+   public Rectangle(Point bottomLeft, Point topRight) {
+      setPos(bottomLeft, topRight);
+   }
+   
+   public Rectangle(Line bottom, int height) {
+      setPos(bottom, height);
+   }
+   
+   public Rectangle(Line posSlopeDiagonal) {
+      setPos(posSlopeDiagonal);
+   }
+   
+   //getters
+   public int getHeight() {
+      if (this.height != this.topRight.getY() || this.height != this.top.getY1())
+         throw new Exception("Error! Rectangle has multiple heights!");
+      return this.height;
+   }
+   
+   //setters
+   public void setPos(int x, int y, int width, int height) {
       this.x = x;
       this.y = y;
       this.width = width;
@@ -44,36 +72,26 @@ public class Rectangle {
       this.right = new Line(this.bottomRight, this.topRight);
    }
    
-   public Rectangle(Point bottomLeft, int sides) {
-      this(bottomLeft.toArray()[0], bottomLeft.toArray()[1], sides, sides);
+   public void setPos(Point bottomLeft, Point topRight) {
+      setPos(bottomLeft.getX(), bottomLeft.getY(), topRight.getX(), topRight.getY());
    }
    
-   public Rectangle(Point bottomLeft, Point topRight) {
-      this.x = bottomLeft.getX();
-      this.y = bottomLeft.getY();
-      this.width = topRight.getX();
-      this.height = topRight.getY();
-      
-      this.topRight = new Point(topRight);
-      this.topLeft = new Point(bottomLeft.getX(), topRight.getY());
-      this.bottomLeft = new Point(bottomLeft);
-      this.bottomRight = new Point(topRight.getX(), bottomLeft.getY());
-      
-      this.top = new Line(this.topLeft, this.topRight);
-      this.bottom = new Line(this.bottomLeft, this.bottomRight);
-      this.left = new Line(this.bottomLeft, this.topLeft);
-      this.right = new Line(this.bottomRight, this.topRight);
+   public void setPos(Line bottom, int height) {
+      setPos(bottom.getX1(), bottom.getY1(), bottom.getX2(), height);
    }
    
-   public Rectangle(Line bottom, int height) {
-      this(bottom.getP1().getX(), bottom.getP1().getY(), bottom.getP2().getX(), bottom.getP1().getY()+height);
+   public void setPos(Line left, Line bottom) {
+      setPos(bottom, left.getY2());
    }
    
-   public int getHeight() {
-      if (this.height != this.topRight.getY() || this.height != this.top.getP1().getY())
-         throw new Exception("Error! Rectangle has multiple heights!");
-      return this.height;
+   public void setPos(Point bottomLeft, Point topRight) {
+      setPos(bottomLeft.getX(), bottomLeft.getY(), topRight.getX(), topRight.getY());
    }
    
-   
+   public void setPos(Line diagonal) {
+      if (posSlopeDiagonal.getSlope() >= 0)
+         throw new IlleagalArgumentException("Invallid slope!");
+      Point [] points = posSlopeDiagonal.toArray();
+      setPos(points[0], points[1]);
+   }
 }
