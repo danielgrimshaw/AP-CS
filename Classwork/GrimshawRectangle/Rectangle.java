@@ -7,7 +7,7 @@ public class Rectangle {
    private Line top, bottom, left, right;
    
    //class constants
-   private static int defaultX = 0, defaultY = 0, defaultWidth = 10, defaultHeight = 10;
+   private final static int defaultX = 0, defaultY = 0, defaultWidth = 10, defaultHeight = 10;
    
    //constructors
    public Rectangle() {
