@@ -28,11 +28,15 @@ public class Rectangle {
    }
    
    public Rectangle(int x, int y, int width, int height) {
-      setPos(int x, int y, width, height);
+      setPos(x, y, width, height);
    }
    
    public Rectangle(Point bottomLeft, int sides) {
       this(bottomLeft.getX(), bottomLeft.getY(), sides, sides);
+   }
+   
+   public Rectangle(Point topLeft, int width, int height) {
+      this(topLeft.getX(), topLeft.getY()-height, width, height);
    }
    
    public Rectangle(Point bottomLeft, Point topRight) {
@@ -51,10 +55,49 @@ public class Rectangle {
    public int getHeight() {
       if (this.height != this.topRight.getY() || this.height != this.top.getY1())
          throw new Exception("Error! Rectangle has multiple heights!");
-      return this.height;
+      return this.topRight.getY();
+   }
+   
+   public int getWidth() {
+      if (this.width != this.topRight.getX() || this.width != this.top.getX1())
+         throw new Exception("Error! Rectangle has multiple widths!");
+      return this.topRight.getX();
+   }
+   
+   
+   public int getX() {
+      //returns the x coordinate of the bottom left corner
+      if (this.x != this.bottomLeft.getX() || this.x != this.bottom.getX1())
+         throw new Exception("Error! Rectangle has multiple bottom left corner x positions!");
+      return this.bottomLeft.getX();
+   }
+   
+   public int getY() {
+      //returns the y coordinate of the bottom left corner
+      if (this.y != this.bottomLeft.getY() || this.y != this.bottom.getY1())
+         throw new Exception("Error! Rectangle has multiple bottom left corner y positions!");
+      return this.bottomLeft.getY();
    }
    
    //setters
+   public void setX(int x) {
+      //set the bottom left x
+      setPos(x, this.getY(), this.getWidth(), this.getHeight());
+   }
+   
+   public void setY(int y) {
+      //sets the bottom left y
+      setPos(this.getX(), y, this.getWidth(), this.getHeight());
+   }
+   
+   public void setWidth(int width) {
+      setPos(this.getX(), this.getY(), width, this.getHeight());
+   }
+   
+   public void setHeight(int height) {
+      setPos(this.getX(), this.getY(), this.getWidth(), height);
+   }
+   
    public void setPos(int x, int y, int width, int height) {
       this.x = x;
       this.y = y;
@@ -94,4 +137,7 @@ public class Rectangle {
       Point [] points = posSlopeDiagonal.toArray();
       setPos(points[0], points[1]);
    }
+   
+   public String toString() {
+      return "Rectangle[x="+this.getX()+", y="+this.getY()+", width="+this.getWidth()+", height="+this.getHeight()+"]";
 }
