@@ -53,32 +53,118 @@ public class Rectangle {
    
    //getters
    public int getHeight() {
-      if (this.height != this.topRight.getY() || this.height != this.top.getY1())
-         throw new Exception("Error! Rectangle has multiple heights!");
-      return this.topRight.getY();
+      return this.height;
    }
    
    public int getWidth() {
-      if (this.width != this.topRight.getX() || this.width != this.top.getX1())
-         throw new Exception("Error! Rectangle has multiple widths!");
-      return this.topRight.getX();
+      return this.width;
    }
    
    
    public int getX() {
       //returns the x coordinate of the bottom left corner
-      if (this.x != this.bottomLeft.getX() || this.x != this.bottom.getX1())
-         throw new Exception("Error! Rectangle has multiple bottom left corner x positions!");
       return this.bottomLeft.getX();
    }
    
    public int getY() {
       //returns the y coordinate of the bottom left corner
-      if (this.y != this.bottomLeft.getY() || this.y != this.bottom.getY1())
-         throw new Exception("Error! Rectangle has multiple bottom left corner y positions!");
       return this.bottomLeft.getY();
    }
    
+   public Point getBottomLeft() {
+      return this.bottomLeft;
+   }
+   
+   public Point getBottomRight() {
+      return this.bottomRight;
+   }
+   
+   public Point getTopLeft() {
+      return this.topLeft;
+   }
+   
+   public Point getTopRight() {
+      return this.topRight;
+   }
+   
+   public Line getTop() {
+      return this.top;
+   }
+   
+   public Line getBottom() {
+      return this.bottom;
+   }
+   
+   public Line getLeft() {
+      return this.left;
+   }
+      
+   public Line getRight() {
+      return this.right;
+   }
+   
+   public boolean contains(int x, int y) {
+      return (x > this.getX() && y < this.getHeight());
+   }
+   
+   public boolean contains(Point p) {
+      int [] point = p.toArray();
+      return contains(point[0], point[1]);
+   }
+   
+   public boolean contains(Rectangle rect) {
+      for (Point point : rect.toArray())
+         if (!this.contains(point))
+            return false;
+      return true;
+   }
+   
+   public int area(Line posSlopeDiagonal) {
+      return (posSlopeDiagonal.getX2()-posSlopeDiagonal.getX1())*(posSlopeDiagonal.getY2()-posSlopeDiagonal.getY1());
+   }
+   
+   public int getArea() {
+      Line posSlopeDiagonal = new Line(this.bottomLeft, this.topRight);
+      return area(posSlopeDiagonal);
+   }
+   
+   public Rectangle intersection(Rectangle rect) {
+      if (this.contains(rect) || rect.contains(this))
+         return new Rectangle(0,0,0,0);
+      
+      if (this.contains(rect.getBottomLeft())) {
+         if (rect.contains(this.getTopRight()))
+            return new Rectangle(rect.getBottomLeft(), this.getTopRight());
+         else {
+            if (this.contains(rect.getTopLeft()))
+               return new Rectangle(rect.getBottomLeft(), this.right.intersect(rect.getTop())); 
+            else
+               return new Rectangle(rect.getBottomLeft(), this.top.intersect(rect.getRight()));
+         }
+      } 
+      else if (this.contains(rect.getBottomRight())) {
+         if (rect.contains(this.getTopLeft()))
+            return new Rectangle(this.left.intersect(rect.getBottom()), this.top.intersect(rect.getRight()));
+         else {
+            if (this.contains(rect.getTopRight()))
+               return new Rectangle(this.left.intersect(rect.getBottom()), rect.getTopRight()); 
+         }
+      } 
+      else if (this.contains(rect.getTopRight())) {
+         if (rect.contains(this.getBottomLeft()))
+            return new Rectangle(this.getBottomLeft(), rect.getTopRight());
+         else {
+            if (this.contains(rect.getTopLeft()))
+               return new Rectangle(this.bottom.intersect(rect.getLeft()), rect.getTopRight()); 
+         }
+      }
+      if (rect.contains(this.getBottomRight()))
+         return new Rectangle(this.bottom.intersect(rect.getLeft()), this.right.intersect(rect.getTop()));
+      if (this.contains(rect.getBottomLeft()))
+         return new Rectangle(rect.getBottomLeft(), this.right.intersect(rect.getTop())); 
+      return new Rectangle();
+   }
+
    //setters
    public void setX(int x) {
       //set the bottom left x
@@ -116,28 +202,35 @@ public class Rectangle {
    }
    
    public void setPos(Point bottomLeft, Point topRight) {
-      setPos(bottomLeft.getX(), bottomLeft.getY(), topRight.getX(), topRight.getY());
+      setPos(bottomLeft.getX(), bottomLeft.getY(), topRight.getX()-bottomLeft.getX(), topRight.getY()-bottomLeft.getY());
    }
    
    public void setPos(Line bottom, int height) {
-      setPos(bottom.getX1(), bottom.getY1(), bottom.getX2(), height);
+      setPos(bottom.getX1(), bottom.getY1(), bottom.getX2()-bottom.getX1(), height);
    }
    
    public void setPos(Line left, Line bottom) {
-      setPos(bottom, left.getY2());
-   }
-   
-   public void setPos(Point bottomLeft, Point topRight) {
-      setPos(bottomLeft.getX(), bottomLeft.getY(), topRight.getX(), topRight.getY());
+      setPos(bottom, left.getY2()-bottom.getY1());
    }
    
    public void setPos(Line diagonal) {
-      if (posSlopeDiagonal.getSlope() >= 0)
-         throw new IlleagalArgumentException("Invallid slope!");
-      Point [] points = posSlopeDiagonal.toArray();
+      if (diagonal.getSlope() <= 0)
+         throw new IllegalArgumentException("Invallid slope!");
+      Point [] points = diagonal.toArray();
       setPos(points[0], points[1]);
    }
    
+   //others
+   public Point [] toArray() {
+      Point [] points = new Point [4];
+      points[0] = this.getTopLeft();
+      points[1] = this.getTopRight();
+      points[2] = this.getBottomRight();
+      points[3] = this.getBottomLeft();
+      return points;
+   }
+    
    public String toString() {
       return "Rectangle[x="+this.getX()+", y="+this.getY()+", width="+this.getWidth()+", height="+this.getHeight()+"]";
+   }
 }

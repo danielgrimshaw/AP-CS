@@ -4,7 +4,7 @@ public class Line {
    
    //constructors
    public Line(Line copy) {
-      this.setPosition(copy.toArray);
+      this.setPosition(copy.toArray());
    }
       
    public Line(Point p1, Point p2) {
@@ -44,6 +44,29 @@ public class Line {
       return this.start.slope(this.end);
    }
    
+   public Point intersect(Line other) {
+      //designed to only work for rectangles and limited other cases.
+      if (this.getX1() != this.getX2()) {
+         int m = (int)this.getSlope();
+         int b = this.getY1()-m*this.getX1();
+         if (other.getX1() == other.getX2()) {
+            if (other.getX1() < this.getX2() && other.getX1() > this.getX1())
+               return new Point(other.getX1(), m*other.getX1() + b);
+            else 
+               throw new IllegalArgumentException("There is no intersection between the lines!");
+         }
+      } else {
+         int m = (int)other.getSlope();
+         int b = other.getY1()-m*other.getX1();
+         if (this.getX1() < other.getX2() && this.getX1() > other.getX1())
+            return new Point(this.getX1(), m*this.getX1() + b);
+         else 
+            throw new IllegalArgumentException("There is no intersection between the lines!");
+      }
+      
+      throw new IllegalArgumentException("This function does not support two diagonal lines");
+   }
+   
    //setters
    public void setPosition(Point [] vals) {
       if (vals.length != 2)
@@ -58,8 +81,8 @@ public class Line {
    
    public Point [] toArray() {
       Point [] ret = new Point [2];
-      ret[0] = this.p1;
-      ret[1] = this.p2;
+      ret[0] = this.start;
+      ret[1] = this.end;
       return ret;
    }
    
