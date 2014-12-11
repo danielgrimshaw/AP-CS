@@ -10,12 +10,13 @@ public class RandomWalkerMain
       g.setColor(Color.RED);
       g.drawString("Random Walker", 500, 50);
       RandomWalker henry = new RandomWalker(500, 400);
-      for (int i = 0; i < 150; i++)//150000
+      for (int i = 0; i < 150000; i++)
       {
          henry.move();
          int x = henry.getX();
          int y = henry.getY();
          g.fillRect(x,y,1,1);
+         g.drawString(new String(henry.getSteps()), 0, 0); 
          p.sleep(1);
       }
       System.out.println("Total Steps = " + henry.getSteps() + ".");

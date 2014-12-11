@@ -80,6 +80,6 @@ public class RandomWalker {
    }
    
    public String toString() {
-      String ret = "RandomWalker(at:"+this.location.toString()+" steps:"+this.getSteps();
+      return "RandomWalker(at:"+this.location.toString()+" steps:"+this.getSteps();
    }
 }
