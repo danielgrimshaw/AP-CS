@@ -38,6 +38,15 @@ public class RandomWalker {
    
    //setters
    public void setPos(int x, int y) {
+      if (x > 1000)
+         x = 1000;
+      if (x < 0)
+         x = 0;
+         
+      if (y > 800)
+         y = 800;
+      if (y < 0)
+         y = 0;
       this.x = x;
       this.y = y;
       this.location = new Point(x, y);
