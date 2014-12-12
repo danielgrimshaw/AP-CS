@@ -11,14 +11,10 @@ s#i0
 s#k0
 s#j0
 s#l0
-!98;u
-a1	b68	c255	f%\011GrimshawRandomWalker.jar	g%\011GrimshawRandomWalker.zip	hManifest-Version\0111.0!89;g
-%\011DrawingPanel.java
-%\011RandomWalkerMain.java
-%\011RandomWalker.java
-%\011Point.java
-!89;f
-%\011DrawingPanel.java
-%\011RandomWalkerMain.java
-%\011RandomWalker.java
-%\011Point.java
+!102;u
+a1	b68	c255	f%\011GrimshawRationalNumber.jar	g%\011GrimshawRationalNumber.zip	hManifest-Version\0111.0!54;g
+%\011RationalNumber.java
+%\011RationalNumberMain.java
+!54;f
+%\011RationalNumber.java
+%\011RationalNumberMain.java

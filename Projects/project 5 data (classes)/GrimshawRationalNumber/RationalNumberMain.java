@@ -1,7 +1,7 @@
 public class RationalNumberMain
 {
    public static void main(String[] args)
-   {/*
+   {
       RationalNumber num0 = new RationalNumber();
       RationalNumber num1 = new RationalNumber(3, 8);
       RationalNumber num2 = new RationalNumber(3, 6);
@@ -21,6 +21,5 @@ public class RationalNumberMain
    
       RationalNumber result2 = num3.subtract(num4);
       System.out.println("Subtraction Result is " + result2);
-      */
    }
 }

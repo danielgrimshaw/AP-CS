@@ -16,7 +16,6 @@ public class RandomWalkerMain
          int x = henry.getX();
          int y = henry.getY();
          g.fillRect(x,y,1,1);
-         g.drawString(new String(henry.getSteps()), 0, 0); 
          p.sleep(1);
       }
       System.out.println("Total Steps = " + henry.getSteps() + ".");
