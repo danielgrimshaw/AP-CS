@@ -2,22 +2,29 @@
 
 // Add class header below
 public class Lawyer extends Employee{
+   public Lawyer() {
+      super();
+   }
+   
+   public Lawyer(String name) {
+      super(name);
+   }
     // Add method that overrides getVacationForm from Employee class
 	 // for pink form
-    public String getVacationForm() {
+   public String getVacationForm() {
       return "pink";
-    }
+   }
      
     // Add method that overrides getVacationDays from Employee class
     // for 3 weeks of vacation 
-    public int getVacationDays() {
+   public int getVacationDays() {
       return 15;
-    }
+   }
 		
 		
 	 // Add method sue() that prints "I'll see you in court!"
-    public void sue() {
+   public void sue() {
       System.out.println("I\'ll see you in court!");
-    }
+   }
 
 }
