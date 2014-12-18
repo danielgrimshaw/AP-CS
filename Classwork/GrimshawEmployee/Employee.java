@@ -1,8 +1,9 @@
 // A class to represent employees in general (20-page manual).
 public class Employee {
    private String name, vacationForm = "yellow";
-   private int years, workHours = 40, vacationDays = 10;
-   private double salary = 40000;
+   private int years;
+   private static int workHours = 40, vacationDays = 10;
+   private static double salary = 40000;
    
    public Employee() {
       this("Bob");
@@ -37,7 +38,7 @@ public class Employee {
    }
    
    public void setHours(int hours) {
-      this.hours = hours;
+      this.workHours = hours;
    }
    
    public void setVacationDays(int vacation) {
@@ -48,5 +49,7 @@ public class Employee {
       this.salary = salary;
    }
    
-   public void set
+   public void setVacationForm(String color) {
+      this.vacationForm = color;
+   }
 }
