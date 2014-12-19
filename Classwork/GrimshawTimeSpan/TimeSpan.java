@@ -7,7 +7,7 @@ public class TimeSpan {
       minutes = 0;
       add(hours1, minutes1);
    }
- 
+
    public void add(int hours1, int minutes1) {
       hours += hours1;
       minutes += minutes1;
@@ -16,8 +16,6 @@ public class TimeSpan {
          hours++;
       }
    }
-   
-   
 
    public void add(TimeSpan time) {
       add(time.hours, time.minutes);
@@ -26,16 +24,20 @@ public class TimeSpan {
    public double getTotalHours() {
       return hours + minutes / 60.0;
    }
- 
+
+   public int getTotalMins() {
+      return hours*60 + minutes;
+   }
+
    public boolean equals(Object o) {
       if (o instanceof TimeSpan) {
          TimeSpan other = (TimeSpan) o;
-         return (this.hours == other.hours && this.minutes == other.minutes);
+         return (this.getTotalMins() == other.getTotalMins());
       } else {
          return false;
       }
    }
-   
+
    public String toString() {
       return hours + "h" + minutes + "m";
    }
