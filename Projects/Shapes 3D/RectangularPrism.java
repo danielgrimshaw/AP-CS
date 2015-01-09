@@ -44,15 +44,35 @@ public class RectangularPrism implements Shape3D {
    
    private void updateSurfaceArea() {
       double [] surfaces = new double [3]; //there are three distinct sizes of faces
-      int surfaceArea = 0;
+      double surfaceArea = 0;
       
       surfaces[0] = this.x * this.y;
       surfaces[1] = this.x * this.z;
       surfaces[2] = this.y * this.z;
       
-      for (int surface : surfaces)
+      for (double surface : surfaces)
          surfaceArea += surface;
          
       this.sa = 2*surfaceArea;
+   }
+   
+   public double getVolume() {
+      return this.volume;
+   }
+   
+   public double getSurfaceArea() {
+      return this.sa;
+   }
+   
+   public String toString() {
+      return "Rectangular Prism";
+   }
+   
+   public boolean equals(Object o) {
+      if (o instanceof RectangularPrism) {
+         RectangularPrism p = (RectangularPrism)o;
+         return p.getLenX() == this.getLenX() && p.getLenY() == this.getLenY() && p.getLenZ() == this.getLenZ();
+      }
+      return false;
    }
 }
