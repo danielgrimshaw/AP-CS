@@ -23,7 +23,27 @@ public class SquarePyramid implements Shape3D {
    }
          
    public void setSize(double baseSide, double height) {
-         
+      this.baseSide = baseSide;
+      this.height = height;
+      
+      updateVolume();
+      updateSurfaceArea();
+   }
+   
+   private void updateVolume() {
+      this.volume = (Math.pow(this.baseSide, 2)*height)/3;
+   }
+   
+   private void updateSurfaceArea() {
+      this.sa = this.baseSide*(this.baseSide+Math.sqrt(Math.pow(this.baseSide, 2)+4*Math.pow(this.height, 2));
+   }
+   
+   public double getBaseSide() {
+      return this.baseSide;
+   }
+   
+   public double getHeight() {
+      return this.height;
    }
    
    public double getVolume() {

@@ -17,7 +17,7 @@ public class Cube extends RectangularPrism {
    }
    
    public String toString() {
-      return "Cube";
+      return "Cube with a side length of "+this.getLenX();
    }
    
    public boolean equals(Object o) {
