@@ -6,11 +6,11 @@ public class SquarePyramid implements Shape3D {
       this(1.0);
    }
    
-   public SquarePyramaid(double baseSide) {
+   public SquarePyramid(double baseSide) {
       this(baseSide, 1.0);
    }
    
-   public SquarePyramaid(double baseSide, double height) {
+   public SquarePyramid(double baseSide, double height) {
       this.setSize(baseSide, height);
    }
    
@@ -35,7 +35,7 @@ public class SquarePyramid implements Shape3D {
    }
    
    private void updateSurfaceArea() {
-      this.sa = this.baseSide*(this.baseSide+Math.sqrt(Math.pow(this.baseSide, 2)+4*Math.pow(this.height, 2));
+      this.sa = this.baseSide*(this.baseSide+Math.sqrt(Math.pow(this.baseSide, 2)+4*Math.pow(this.height, 2)));
    }
    
    public double getBaseSide() {
@@ -52,5 +52,15 @@ public class SquarePyramid implements Shape3D {
    
    public double getSurfaceArea() {
       return this.sa;
+   }
+   
+   public boolean equals(Object o) {
+      if (o instanceof SquarePyramid)
+         return ((SquarePyramid)o).getBaseSide() == this.getBaseSide() && ((SquarePyramid)o).getHeight() == this.getHeight();
+      return false;
+   }
+   
+   public String toString() {
+      return "Square pyramid with a base length of "+this.getBaseSide()+" and height of "+this.getHeight();
    }
 }

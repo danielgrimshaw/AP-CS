@@ -17,12 +17,33 @@ public class Sphere implements Shape3D {
       updateSurfaceArea();
    }
    
-   private void updateVolume();
+   private void updateVolume() {
+      this.volume = 4.0*Math.PI*Math.pow(this.radius, 3)/3;
+   }
+   
+   private void updateSurfaceArea() {
+      this.sa = 4.0*Math.PI*Math.pow(this.radius, 2);
+   }
+   
+   public double getRadius() {
+      return this.radius;
+   }
+   
    public double getVolume() {
       return this.volume;
    }
    
    public double getSurfaceArea() {
       return this.sa;
+   }
+   
+   public String toString() {
+      return "Sphere with radius "+this.radius;
+   }
+   
+   public boolean equals(Object o) {
+      if (o instanceof Sphere)
+         return this.getRadius() == ((Sphere)o).getRadius();
+      return false;
    }
 }

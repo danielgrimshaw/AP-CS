@@ -65,7 +65,7 @@ public class RectangularPrism implements Shape3D {
    }
    
    public String toString() {
-      return "Rectangular Prism with a length of "+this.getLenX()+", width of "+this.getLenZ()+"and height of "+this.getLenY();
+      return "Rectangular Prism with a length of "+this.getLenX()+", width of "+this.getLenY()+", and height of "+this.getLenZ();
    }
    
    public boolean equals(Object o) {
