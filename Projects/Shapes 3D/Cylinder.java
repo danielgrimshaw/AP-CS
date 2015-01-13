@@ -1,4 +1,11 @@
+/**
+ * Cylinder.java
+ * A class for representing 3D cylinders.
+ */
+
 public class Cylinder extends CircularShapeWithHeight {
+   //This class is identical to CircularCone except that CircularCone has been replaced with Cylinder
+   //And the volume and surface area math is different
    private double volume, sa;
    
    public Cylinder() {
@@ -15,11 +22,11 @@ public class Cylinder extends CircularShapeWithHeight {
       this.updateSurfaceArea();
    }
    
-   private void updateVolume() {
+   private void updateVolume() { //updates the volume variable
       this.volume = this.getCrossSectionArea()*this.getHeight();
    }
    
-   private void updateSurfaceArea() {
+   private void updateSurfaceArea() { //updates the sa variable
       this.sa = this.getCrossSectionPerimeter()*this.getHeight()+2*this.getCrossSectionArea();
    }
    

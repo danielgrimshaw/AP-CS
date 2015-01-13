@@ -1,5 +1,5 @@
 public class Sphere implements Shape3D {
-   private double radius;
+   private double radius; //The only differenc between any to spheres is their radius
    private double volume, sa;
    
    public Sphere() {
@@ -29,7 +29,7 @@ public class Sphere implements Shape3D {
       return this.radius;
    }
    
-   public double getVolume() {
+   public double getVolume() { //The advantage of using variables to hold values is really simple getters.
       return this.volume;
    }
    
@@ -41,7 +41,7 @@ public class Sphere implements Shape3D {
       return "Sphere with radius "+this.radius;
    }
    
-   public boolean equals(Object o) {
+   public boolean equals(Object o) { //Spheres can only be identical to spheres
       if (o instanceof Sphere)
          return this.getRadius() == ((Sphere)o).getRadius();
       return false;

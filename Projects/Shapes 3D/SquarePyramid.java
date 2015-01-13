@@ -1,3 +1,8 @@
+/**
+ * SquarePyramid.java
+ * A class for representing a Square Pyramid shape.
+ */
+
 public class SquarePyramid implements Shape3D {
    private double baseSide, height;
    private double volume, sa;
@@ -30,11 +35,11 @@ public class SquarePyramid implements Shape3D {
       updateSurfaceArea();
    }
    
-   private void updateVolume() {
+   private void updateVolume() { //Calculates the volume
       this.volume = (Math.pow(this.baseSide, 2)*height)/3;
    }
    
-   private void updateSurfaceArea() {
+   private void updateSurfaceArea() { //Calculates the surface area
       this.sa = this.baseSide*(this.baseSide+Math.sqrt(Math.pow(this.baseSide, 2)+4*Math.pow(this.height, 2)));
    }
    
@@ -54,7 +59,7 @@ public class SquarePyramid implements Shape3D {
       return this.sa;
    }
    
-   public boolean equals(Object o) {
+   public boolean equals(Object o) { //Square pyramids can only be identical to square pyramids.
       if (o instanceof SquarePyramid)
          return ((SquarePyramid)o).getBaseSide() == this.getBaseSide() && ((SquarePyramid)o).getHeight() == this.getHeight();
       return false;

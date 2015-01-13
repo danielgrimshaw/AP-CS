@@ -1,5 +1,11 @@
+/**
+ * RectangularPrism.java
+ * A class for representing Rectangular Prisms
+ * Superclass of Cube
+ */
+
 public class RectangularPrism implements Shape3D {
-   private double x, y, z;
+   private double x, y, z; //Side lengths
    private double volume, sa; //sa is surface area
    
    public RectangularPrism() {
@@ -19,15 +25,15 @@ public class RectangularPrism implements Shape3D {
    }
    
    public double getLenX() {
-      return this.x;
+      return this.x; //length
    }
       
    public double getLenY() {
-      return this.y;
+      return this.y; //width
    }
    
    public double getLenZ() {
-      return this.z;
+      return this.z; //height
    }
    
    public void setSize(double x, double y, double z) {
@@ -68,7 +74,7 @@ public class RectangularPrism implements Shape3D {
       return "Rectangular Prism with a length of "+this.getLenX()+", width of "+this.getLenY()+", and height of "+this.getLenZ();
    }
    
-   public boolean equals(Object o) {
+   public boolean equals(Object o) { //Cubes count as instances of RectangularPrisms
       if (o instanceof RectangularPrism) {
          RectangularPrism p = (RectangularPrism)o;
          return p.getLenX() == this.getLenX() && p.getLenY() == this.getLenY() && p.getLenZ() == this.getLenZ();
