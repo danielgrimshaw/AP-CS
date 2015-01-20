@@ -60,6 +60,49 @@ public class GrimshawArrayListExample {
       
       if (listList.contains(test2))
          System.out.println(listList.indexOf(test2)+" "+listList.get(listList.indexOf(test2)));
+         
+         
+      ArrayList<Integer> intList = new ArrayList<Integer>();
+      ArrayList<Double> doubleList = new ArrayList<Double>();
       
+      int i = 50;
+      Integer j = i;
+      Integer k = new Integer(i);
+      intList.add(i);
+      intList.add(j);
+      intList.add(k);
+      doubleList.add(5.0);
+      System.out.println(intList + "\n" + doubleList);
+      
+      strList.add("item 6");
+      strList.add("item 26");
+      strList.add("item 16");
+      strList2.add("item 6");
+      strList2.add("item 26");
+      strList2.add("item 16");
+      System.out.println("List Before: " + strList);
+      
+      removeByLastChar("6", strList);
+      System.out.println("List After: " + strList);
+      
+      ArrayList<String> newArrayList = newItems("test", "test2");
+      System.out.println(newArrayList);
+   }
+   
+   public static void removeByLastChar(String id, List<String> strList) {
+      for (int i = 0; i < strList.size(); i++) {
+         String element = strList.get(i);
+         if (element.endsWith(id)) {
+            strList.remove(i);
+            i--;
+         }
+      }
+   }
+   
+   public static ArrayList<String> newItems(String item1, String item2){
+      ArrayList<String> generated = new ArrayList<String>();
+      generated.add(item1);
+      generated.add(item2);
+      return generated;
    }
 }
