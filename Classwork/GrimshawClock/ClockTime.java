@@ -36,6 +36,8 @@ public class ClockTime implements Comparable<ClockTime> {
          oldAm = !oldAm;
       }
       
+      if (oldHours == 12)
+         oldAm = !oldAm;
       newTime[0] = (Object)oldHours;
       newTime[1] = (Object)oldMinutes;  
       newTime[2] = (Object)oldAm;
@@ -51,11 +53,13 @@ public class ClockTime implements Comparable<ClockTime> {
    }
    
    public String getAmPm() {
-      return this.am ? "am" : "pm";
+      return this.am ? "AM" : "PM";
    }
    
    public String toString() {
-      return this.hours + ":" + this.minutes + " " + this.getAmPm();
+      String ret =  this.hours + ":";
+      ret += (this.minutes<10 ? "0"+this.minutes : this.minutes) + " " + this.getAmPm();
+      return ret;
    }
    
    public int compareTo(ClockTime other) {
@@ -65,8 +69,8 @@ public class ClockTime implements Comparable<ClockTime> {
          otherTotal += 12*60;
       if (!this.am)
          total += 12*60;
-      otherTotal += other.hours*60 + other.minutes;
-      total += this.hours*60 + this.minutes;
+      otherTotal += (other.hours==12 ? 0 : other.hours*60) + other.minutes;
+      total += (this.hours==12 ? 0 : this.hours*60) + this.minutes;
       return total-otherTotal;
    }
 }
