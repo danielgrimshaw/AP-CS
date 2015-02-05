@@ -31,7 +31,7 @@ public class Item {
    }
       
    public double priceFor(int quantity) {
-      return (this.quantity/this.bulk[0] * this.bulk[1]) + (this.quantity%this.bulk[0] * this.price);
+      return (quantity/this.bulk[0] * this.bulk[1]) + (quantity%this.bulk[0] * this.price);
    }
          
    public String toString() {
