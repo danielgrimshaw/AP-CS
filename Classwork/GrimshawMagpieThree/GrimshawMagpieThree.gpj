@@ -1,5 +1,5 @@
 !999;s
-A
+J
 SAU0PATH+=%<JGRASP_PATHS>%;\012PATH=+%;%<JGRASP_C_PATHS>\012CYGWIN=nodosfilewarning
 SCU0PATH+=%<JGRASP_PATHS>%;\012PATH=+%;%<JGRASP_C_PATHS>\012CYGWIN=nodosfilewarning
 S+U0PATH+=%<JGRASP_PATHS>%;\012PATH=+%;%<JGRASP_C_PATHS>\012CYGWIN=nodosfilewarning
@@ -11,11 +11,12 @@ s#i0
 s#k0
 s#j0
 s#l0
-!67;g
-%\011MagpieRunner3.java
+!96;u
+a1	b68	c255	f%\011GrimshawMagpieThree.jar	g%\011GrimshawMagpieThree.zip	hManifest-Version\0111.0!67;g
 %\011Magpie3.java
+%\011MagpieRunner3.java
 %\011StringExplorer.java
 !67;f
-%\011MagpieRunner3.java
 %\011Magpie3.java
+%\011MagpieRunner3.java
 %\011StringExplorer.java

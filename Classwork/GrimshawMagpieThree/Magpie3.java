@@ -36,14 +36,39 @@ public class Magpie3
 		}
 		else if (findKeyword(statement, "no") >= 0)
 		{
-			response = "Why so negative?";
+			response = "Why not?";
 		}
 		else if (findKeyword(statement, "mother") >= 0
 				|| findKeyword(statement, "father") >= 0
 				|| findKeyword(statement, "sister") >= 0
 				|| findKeyword(statement, "brother") >= 0)
 		{
-			response = "Tell me more about your family.";
+         boolean foundNone = true;
+			response = "Tell me more about your";
+         if (findKeyword(statement, "brother") >= 0)
+         {
+            foundNone = false;
+            response += " brother";
+         }
+         if (findKeyword(statement, "mother") >= 0)
+         {
+            foundNone = false;
+            response += " mother";
+         }
+         if (findKeyword(statement, "sister") >= 0)
+         {
+            foundNone = false;
+            response += " sister";
+         }
+         if (findKeyword(statement, "father") >= 0)
+         {
+            foundNone = false;
+            response += " father";
+         }
+         if (foundNone) {
+            response += " family";
+         }
+         response += ".";
 		}
 		else
 		{
@@ -163,7 +188,14 @@ public class Magpie3
 		{
 			response = "You don't say.";
 		}
-
+      else if (whichResponse == 4)
+      {
+         response = "That's what the government wants you to think.";
+      }
+      else
+      {
+         response = "Please restate the inquery.";
+      }
 		return response;
 	}
 
