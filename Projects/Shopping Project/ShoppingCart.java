@@ -1,3 +1,11 @@
+/**
+ * ShoppingCart.java
+ *
+ * A class for representing an ordering catalog.
+ * In future there will be a graphical interface.
+ *
+ */
+
 import java.util.*;
 
 public class ShoppingCart {
@@ -9,7 +17,15 @@ public class ShoppingCart {
       this.dscnt = false;
    }
    
-   public void add(ItemOrder order) {
+   public void add(ItemOrder order) { // checks if the Item already has been ordered
+                                      // to avoid memory and price leaks
+      for (int i = 0; i < orders.size(); i++) {
+         Item item = orders.get(i).getItem();
+         if (item.getName().equals(order.getItem().getName())) {
+            orders.get(i).setQuantity(order.getQuantity());
+            return;
+         }
+      }
       orders.add(order);
    }
    
@@ -21,7 +37,7 @@ public class ShoppingCart {
       double sum = 0;
       for (ItemOrder order : orders)
          sum += order.getPrice();
-      return sum;
+      return dscnt ? 0.9*sum : sum;
    }
    
    public String toString() {
