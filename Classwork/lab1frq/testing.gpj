@@ -1,5 +1,5 @@
 !999;s
-A
+J
 SAU0PATH+=%<JGRASP_PATHS>%;\012PATH=+%;%<JGRASP_C_PATHS>\012CYGWIN=nodosfilewarning
 SCU0PATH+=%<JGRASP_PATHS>%;\012PATH=+%;%<JGRASP_C_PATHS>\012CYGWIN=nodosfilewarning
 S+U0PATH+=%<JGRASP_PATHS>%;\012PATH=+%;%<JGRASP_C_PATHS>\012CYGWIN=nodosfilewarning
@@ -11,7 +11,8 @@ s#i0
 s#k0
 s#j0
 s#l0
-!52;g
+!72;u
+a1	b68	c255	f%\011testing.jar	g%\011testing.zip	hManifest-Version\0111.0!52;g
 %\011TextFormatterTest.java
 %\011TextFormatter.java
 !52;f
