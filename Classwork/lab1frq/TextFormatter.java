@@ -5,17 +5,20 @@ public class TextFormatter {
       line = lineToFormat;
    }
    
-   private int findString(String str, int start) {
+   public int findString(String str, int start) {
       int index = line.indexOf(str,start);
       while (index != -1) {
-         if (!(line.substring(index+1,index+2).equals(str)))
+         if (line.length() == index+1 || !(line.substring(index,index+2).equals(str+str)))
             break;
-         index = line.indexOf(str, index+1);
+         if (line.substring(index,index+2).equals(str+str))
+            index = line.indexOf(str, index+2);
+         else
+            index = line.indexOf(str, index+1);
       }
       return index;
    }
    
-   private int countStrings(String str) {
+   public int countStrings(String str) {
       int count = 0;
       int start = 0;
       while (findString(str, start) != -1) {
@@ -26,7 +29,7 @@ public class TextFormatter {
    }
       
    public String convertItalics() {
-      if (countStrings("_")%2 == 1)
+      if (countStrings("_")%2 == 1 || countStrings("_") == 0)
          return line;
       String newLine = "";
       int start = 0;
