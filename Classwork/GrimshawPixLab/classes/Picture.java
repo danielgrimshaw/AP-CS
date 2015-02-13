@@ -250,16 +250,23 @@ public class Picture extends SimplePicture
    }
    
    public void fixUnderwater() {
+      // Highlights all of the fish in red.
+      // There are five fish.
+      // The data is a bit noisy, but I am still
+      // trying to work out a good filter.
       Pixel [][] pict = this.getPixels2D();
-      for (Pixel [] row : pict)
-         for (Pixel pixel : row) {
-            if (pixel.getBlue() >= 170 && pixel.getRed() <= 30) {
+      
+      for (Pixel [] row : pict) {
+         for (int i = 0; i < row.length; i++) {
+            Pixel pixel = row[i];
+            if (pixel.getRed() <= 30 && pixel.getBlue() >= 155) {
                int tmp = pixel.getRed();
                pixel.setRed(pixel.getBlue());
                pixel.setBlue(tmp);
                pixel.setGreen(0);
             }
          }
+      }
    }
    
    /* Main method for testing - each class in Java can have a main 
@@ -267,7 +274,7 @@ public class Picture extends SimplePicture
     */
    public static void main(String[] args) 
    {
-      Picture beach = new Picture("beach.jpg");
+      Picture beach = new Picture("water.jpg");
       beach.explore();
       beach.zeroBlue();
       beach.explore();
