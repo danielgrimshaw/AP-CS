@@ -289,16 +289,16 @@ public class Picture extends SimplePicture
    public void mirrorHorizontal()
    {
       Pixel[][] pixels = this.getPixels2D();
-      Pixel leftPixel = null;
-      Pixel rightPixel = null;
+      Pixel topPixel = null;
+      Pixel bottomPixel = null;
       int height = pixels.length;
       for (int row = 0; row < height/2; row++)
       {
          for (int col = 0; col < pixels[0].length; col++)
          {
-            leftPixel = pixels[row][col];
-            rightPixel = pixels[height - 1 - row][col];
-            rightPixel.setColor(leftPixel.getColor());
+            topPixel = pixels[row][col];
+            bottomPixel = pixels[height - 1 - row][col];
+            bottomPixel.setColor(topPixel.getColor());
          }
       } 
    }
@@ -306,20 +306,35 @@ public class Picture extends SimplePicture
    public void mirrorHorizontalBotToTop()
    {
       Pixel[][] pixels = this.getPixels2D();
-      Pixel leftPixel = null;
-      Pixel rightPixel = null;
+      Pixel topPixel = null;
+      Pixel bottomPixel = null;
       int height = pixels.length;
       for (int row = 0; row < height/2; row++)
       {
          for (int col = 0; col < pixels[0].length; col++)
          {
-            leftPixel = pixels[row][col];
-            rightPixel = pixels[height - 1 - row][col];
-            leftPixel.setColor(rightPixel.getColor());
+            topPixel = pixels[row][col];
+            bottomPixel = pixels[height - 1 - row][col];
+            topPixel.setColor(bottomPixel.getColor());
          }
       } 
    }
    
+   public void mirrorDiagonal()
+   {
+      Pixel [][] pixels = this.getPixels2D();
+      Pixel leftPixel = null;
+      Pixel rightPixel = null;
+      for (int row = 0; row < pixels.length; row++)
+      {
+         for (int col = 0; col < row; col++) {
+            leftPixel = pixels[row][col];
+            rightPixel = pixels[col][row];
+            rightPixel.setColor(leftPixel.getColor());
+         }
+      }
+   }
+
    /* Main method for testing - each class in Java can have a main 
     * method 
     */
