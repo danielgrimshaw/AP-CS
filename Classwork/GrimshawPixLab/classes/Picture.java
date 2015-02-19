@@ -138,7 +138,9 @@ public class Picture extends SimplePicture
             rightPixel = pixels[row]                       
                              [mirrorPoint - col + mirrorPoint];
             rightPixel.setColor(leftPixel.getColor());
+            count++;
          }
+         System.out.println(count);
       }
    }
    
@@ -335,12 +337,58 @@ public class Picture extends SimplePicture
       }
    }
 
+   public void mirrorArms()
+   {
+      Pixel topPixel = null;
+      Pixel bottomPixel = null;
+      Pixel[][] pixels = this.getPixels2D();
+      
+      for (int row = 158; row < 191; row++)
+      {
+         for (int col = 105; col < 170; col++)
+         {
+            
+            topPixel = pixels [row][col];      
+            bottomPixel = pixels [191 - row + 191][col];
+            bottomPixel.setColor(topPixel.getColor());
+         }
+      }
+      for (int row = 172; row < 196; row++)
+      {
+         for (int col = 239; col < 294; col++)
+         {
+            
+            topPixel = pixels [row][col];      
+            bottomPixel = pixels [196 - row + 196][col];
+            bottomPixel.setColor(topPixel.getColor());
+         }
+      }
+   }
+   
+   public void mirrorGull()
+   {
+      Pixel topPixel = null;
+      Pixel bottomPixel = null;
+      Pixel[][] pixels = this.getPixels2D();
+      
+      for (int row = 234; row < 323; row++)
+      {
+         for (int col = 238; col < 344; col++)
+         {
+            
+            topPixel = pixels [row][col];      
+            bottomPixel = pixels [row][344 - col + 344];
+            bottomPixel.setColor(topPixel.getColor());
+         }
+      }
+   }
+      
    /* Main method for testing - each class in Java can have a main 
     * method 
     */
    public static void main(String[] args) 
    {
-      Picture beach = new Picture("water.jpg");
+      Picture beach = new Picture("seagull.jpg");
       beach.explore();
       //beach.zeroBlue();
       //beach.explore();
