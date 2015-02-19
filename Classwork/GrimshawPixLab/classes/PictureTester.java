@@ -97,6 +97,14 @@ public class PictureTester
       snowman.explore();
    }
    
+   public static void testCopy()
+   {
+      Picture snowman = new Picture("seagull.jpg");
+      snowman.explore();
+      snowman.mirrorGull();
+      snowman.explore();
+   }
+   
    /** Method to test mirrorVertical */
    public static void testMirrorVertical()
    {
@@ -151,10 +159,10 @@ public class PictureTester
       //testMirrorHorizontalBotToTop();
       //testMirrorTemple();
       //testMirrorArms();
-      testMirrorGull();
+      //testMirrorGull();
       //testMirrorDiagonal();
       //testCollage();
-      //testCopy();
+      testCopy();
       //testEdgeDetection();
       //testEdgeDetection2();
       //testChromakey();

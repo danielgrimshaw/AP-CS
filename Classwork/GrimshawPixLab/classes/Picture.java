@@ -382,6 +382,31 @@ public class Picture extends SimplePicture
          }
       }
    }
+   
+   public void copy(Picture fromPic, int fromStartRow, int fromStartCol,
+                  int fromEndRow, int fromEndCol,
+                  int startRow, int startCol)
+   {
+      Pixel fromPixel = null;
+      Pixel toPixel = null;
+      Pixel[][] toPixels = this.getPixels2D();
+      Pixel[][] fromPixels = fromPic.getPixels2D();
+      for (int fromRow = fromStartRow, toRow = startRow; 
+            fromRow < fromEndRow &&
+            toRow < toPixels.length; 
+            fromRow++, toRow++)
+      {
+         for (int fromCol = fromStartCol, toCol = startCol; 
+               fromCol < fromEndCol &&
+               toCol < toPixels[0].length;  
+               fromCol++, toCol++)
+         {
+            fromPixel = fromPixels[fromRow][fromCol];
+            toPixel = toPixels[toRow][toCol];
+            toPixel.setColor(fromPixel.getColor());
+         }
+      }   
+   }
       
    /* Main method for testing - each class in Java can have a main 
     * method 
@@ -390,7 +415,7 @@ public class Picture extends SimplePicture
    {
       Picture beach = new Picture("seagull.jpg");
       beach.explore();
-      //beach.zeroBlue();
+      //beach.copy();
       //beach.explore();
    }
    
