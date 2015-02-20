@@ -407,14 +407,36 @@ public class Picture extends SimplePicture
          }
       }   
    }
+   
+   public void myCollage() {
+      Picture one = new Picture("snowman.jpg");
+      Picture two = new Picture("water.jpg");
+      Picture three = new Picture("swan.jpg");
+      
+      two.fixUnderwater();
+      one.mirrorArms();
+      three.grayscale();
+      
+      this.copy(one, 150, 100, 230, 300, 0, 0);
+      this.copy(two, 0, 160, 150, 465, 0, 840);
+      this.copy(three, 65, 85, 310, 395, 265, 140);
+      this.write("myCollage.jpg");
+   }
+      
       
    /* Main method for testing - each class in Java can have a main 
     * method 
     */
    public static void main(String[] args) 
    {
-      Picture beach = new Picture("seagull.jpg");
-      beach.explore();
+      Picture [] pics = new Picture [4];
+      pics [0] = new Picture("snowman.jpg");
+      pics [1] = new Picture("water.jpg");
+      pics [2] = new Picture("swan.jpg");
+      pics [3] = new Picture("myPicture.jpg");
+      
+      for (Picture p : pics)
+         p.explore();
       //beach.copy();
       //beach.explore();
    }

@@ -101,8 +101,16 @@ public class PictureTester
    {
       Picture snowman = new Picture("seagull.jpg");
       snowman.explore();
-      snowman.mirrorGull();
+      snowman.copy(new Picture("myPicture.jpg"), 367, 811, 400, 845, 100, 100);
       snowman.explore();
+   }
+   
+   public static void testMyCollage()
+   {
+      Picture canvas = new Picture("myPicture.jpg");
+      canvas.explore();
+      canvas.myCollage();
+      canvas.explore();
    }
    
    /** Method to test mirrorVertical */
@@ -162,7 +170,8 @@ public class PictureTester
       //testMirrorGull();
       //testMirrorDiagonal();
       //testCollage();
-      testCopy();
+      //testCopy();
+      testMyCollage();
       //testEdgeDetection();
       //testEdgeDetection2();
       //testChromakey();
