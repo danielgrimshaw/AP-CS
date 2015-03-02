@@ -24,6 +24,9 @@ public class GrimshawRecursion {
       int [] test = {1, 2, 3, 4, 5, 6, 7, 8, 9};
       for (int i : test)
          System.out.println(multiplyEvens(i));
-     writeSquares(5);
+      for (int i : test) {
+         writeSquares(i);
+         System.out.println();
+      }
    }
 }
