@@ -18,6 +18,8 @@ public class SCarpet {
       if (level > 0) {
          for (int i = 1; i <= Math.pow(3, level-1); i++)
             for (int j = 1; j <= Math.pow(3, level-1); j++) 
-               g.fillRect(x+((size/Math.pow(3, level-1))*i), y, size/Math.pow(3, level), size/Math.pow(3, level));
+               g.fillRect((int)(x+((size/Math.pow(3, level-1))*j)), (int)(y+((size/Math.pow(3, level-1))*i)), (int)(size/Math.pow(3, level)), (int)(size/Math.pow(3, level)));
+         drawFigure(g, level-1, x, y, size);
+      }               
    }
 }
