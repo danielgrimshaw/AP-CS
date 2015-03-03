@@ -33,6 +33,6 @@ public class SCarpet {
                g.fillRect(xPos, yPos, rectSize, rectSize);
             }
          drawFigure(g, level-1, x, y, size);
-      }               
+      }
    }
 }
