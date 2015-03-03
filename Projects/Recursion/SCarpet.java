@@ -16,20 +16,23 @@ public class SCarpet {
  // Draws a Sierpinski carpet to the given level inside the given area. 
    public static void drawFigure(Graphics g, int level, int x, int y, int size) {
    //FOUR AND FIVE DONT WORK CORRECTLY YET!!!!
+// NEEDS TESTING!!!!
       if (level > 0) {
          for (int i = 1; i <= Math.pow(3, level-1); i++)
             for (int j = 1; j <= Math.pow(3, level-1); j++) {
                int center = (int)(size/Math.pow(3, level));
                int rectSize = (int)(size/Math.pow(3, level));
-               int xPos = (int)(x+(center*j*level) - (center*(level-1)));
-               int yPos = (int)(y+(i*center*level) - (center*(level-1)));
-               if (level == 2) {
-                  xPos += j > 1 ? center*(j - 1) : 0;
-                  yPos += i > 1 ? center*(i - 1) : 0;
-               } else if (level == 4) {
-                  xPos += j > 1 ? -center*(j - 1) : 0;
-                  yPos += i > 1 ? -center*(i - 1) : 0;
-               }
+               //int xPos = (int)(x+(center*j*level) - (center*(level-1)));
+               //int yPos = (int)(y+(i*center*level) - (center*(level-1)));
+               //if (level == 2) {
+               //   xPos += j > 1 ? center*(j - 1) : 0;
+               //   yPos += i > 1 ? center*(i - 1) : 0;
+               //} else if (level == 4) {
+               //   xPos += j > 1 ? -center*(j - 1) : 0;
+               //   yPos += i > 1 ? -center*(i - 1) : 0;
+               //}
+               int xPos = center*(j-1)*3 + center;
+               int yPos = center*(i-1)*3 + center;
                g.fillRect(xPos, yPos, rectSize, rectSize);
             }
          drawFigure(g, level-1, x, y, size);
