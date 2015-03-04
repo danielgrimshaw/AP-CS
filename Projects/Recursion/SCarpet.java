@@ -2,7 +2,7 @@
 import java.awt.*; 
 import java.util.*; 
 public class SCarpet { 
-   public static final int SIZE = 1080; //243
+   public static final int SIZE = 243*3; //243
    public static void main(String[] args) { 
      // prompt for level 
       Scanner console = new Scanner(System.in); 
@@ -22,8 +22,9 @@ public class SCarpet {
                double pixel = size/Math.pow(3, level);
                int xPos = (int)(Math.round(pixel*(j-1)*3 + pixel));
                int yPos = (int)(Math.round(pixel*(i-1)*3 + pixel));
-               g.fillRect(xPos, yPos, (int)pixel, (int)pixel);
+               g.fillRect(xPos, yPos, (int)(Math.round(pixel)), (int)(Math.round(pixel)));
             }
+
          drawFigure(g, level-1, x, y, size);
       }
    }
