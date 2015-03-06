@@ -30,5 +30,40 @@
    
    	// drawEdge recursive method
       public static void drawEdge(int level, Graphics g, Point p1, Point p2) {
+//(n,xa,xb,ya,yb)
+         double xa, xb, xc, xd, xe, ya, yb, yc, yd, ye, beta, gamma, delta, length
+/*
+                         E
+                         /\
+                        /  \
+                       /    \
+                A_____/      \_____B
+                      C       D
+*/
+                length = Math.sqrt((xa-xb)**2+(ya-yb)**2)
+                xc = xa+(xb-xa)/3
+                yc = ya+(yb-ya)/3
+                xd = xa+2*(xb-xa)/3
+                yd = ya+2*(yb-ya)/3
+                gamma = -xc+(yd**2+xd**2-xc**2-yc**2)/(2*(xd-xc))
+                beta = (yd-yc)/(xd-xc)
+                delta = (gamma*beta+yc)**2-(yc**2+gamma**2-(length/3)**2)*(beta**2+1)
+
+                if (xb.gt.xa)
+                   ye = ((gamma*beta+yc)+Math.sqrt(delta))/(beta**2+1)
+                else
+                   ye = ((gamma*beta+yc)-Math.sqrt(delta))/(beta**2+1)
+
+                xe = (gamma+xc)-beta*ye
+                if (n.eq.0)
+                        write (1,*) xa
+                        write (1,*) xb
+                        write (2,*) ya
+                        write (2,*) yb
+                else
+                        call flocon(n-1,xa,xc,ya,yc)
+                        call flocon(n-1,xc,xe,yc,ye)
+                        call flocon(n-1,xe,xd,ye,yd)
+                        call flocon(n-1,xd,xb,yd,yb)
       }
    }
