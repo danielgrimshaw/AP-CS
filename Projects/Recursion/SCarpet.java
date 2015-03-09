@@ -26,10 +26,10 @@ public class SCarpet {
                for (int j = 0; j < Math.pow(3, level-1); j++) {
                   int xPos = (int)(Math.round(pixel*(j)*3 + pixel))+x;
                   int yPos = (int)(Math.round(pixel*(i)*3 + pixel))+y;
+                  g.setColor(new Color((int)(Math.random()*256),(int)(Math.random()*256),(int)(Math.random()*256)));
                   g.fillRect(xPos, yPos, (int)(Math.round(pixel)), (int)(Math.round(pixel)));
                }
          }
-         g.setColor(new Color((int)(Math.random()*256),(int)(Math.random()*256),(int)(Math.random()*256)));
          drawFigure(g, level-1, x, y, size);
       }
    }
