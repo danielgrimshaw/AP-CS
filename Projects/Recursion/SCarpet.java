@@ -2,7 +2,7 @@
 import java.awt.*; 
 import java.util.*; 
 public class SCarpet { 
-   public static final int SIZE = 243*9; //243
+   public static final int SIZE = 243; //243
    public static final int pixelSize = 7;
    
    public static void main(String[] args) { 
