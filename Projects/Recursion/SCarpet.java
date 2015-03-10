@@ -28,17 +28,17 @@ public class SCarpet {
 
    // Draws a Sierpinski carpet at specified layer with the top left at x,y and size size
    public static void drawFigure(Graphics g, int layer, int x, int y, int size) {
+      if (layer > 0 && layer > pixelSize)
+         drawFigure(g, pixelSize, x, y, size);
       if (layer > 0) {
-         if (layer <= pixelSize) {
-            double pixel = size/Math.pow(3, layer);
-            for (int i = 0; i < Math.pow(3, layer-1); i++)
-               for (int j = 0; j < Math.pow(3, layer-1); j++) {
-                  int xPos = (int)(Math.round(pixel*(j)*3 + pixel))+x;
-                  int yPos = (int)(Math.round(pixel*(i)*3 + pixel))+y;
-                  g.setColor(new Color((int)(Math.random()*32),(int)(Math.random()*256),(int)(Math.random()*256)));
-                  g.fillRect(xPos, yPos, (int)(Math.round(pixel)), (int)(Math.round(pixel)));
-               }
-         }
+         double pixel = size/Math.pow(3, layer);
+         for (int i = 0; i < Math.pow(3, layer-1); i++)
+            for (int j = 0; j < Math.pow(3, layer-1); j++) {
+               int xPos = (int)(Math.round(pixel*(j)*3 + pixel))+x;
+               int yPos = (int)(Math.round(pixel*(i)*3 + pixel))+y;
+               g.setColor(new Color((int)(Math.random()*32),(int)(Math.random()*256),(int)(Math.random()*256)));
+               g.fillRect(xPos, yPos, (int)(Math.round(pixel)), (int)(Math.round(pixel)));
+            }
          drawFigure(g, layer-1, x, y, size);
       }
    }
