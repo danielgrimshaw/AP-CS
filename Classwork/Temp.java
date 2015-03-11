@@ -4,10 +4,8 @@ import java.util.Arrays;
 
 public class Temp {
    public static void main(String []  args) {
-      int [] primes = {2,3,5,7,11,13,17,19,23};
-      backwardDisplay(primes);
-      System.out.println("\n"+Arrays.toString(primes));
-      
+      int[] vals = {-10, -5, 0, 5, 10, 20, 30, 40, 50, 60, 70, 100};
+      binarySearch(vals, 100);
    }
    
    public static void forwardDisplay(int [] primes) {
@@ -43,4 +41,20 @@ public class Temp {
          toReverse[toReverse.length-1-i] = tmp;
       }
    }
+   
+   public static int binarySearch(int[] elements, int target) {
+      int left = 0;
+      int right = elements.length-1;
+      while (left <= right) {
+         int middle = (left + right) / 2;
+         if (target < elements[middle])
+            right = middle -  1;
+         else if (target > elements[middle])
+            left = middle + 1;
+         else
+            return middle;
+      } 
+      return -1; 
+   } 
+
 }
