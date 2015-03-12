@@ -1,11 +1,10 @@
 import java.util.Arrays;
 
-import java.util.Arrays;
-
 public class Temp {
    public static void main(String []  args) {
-      int[] vals = {-10, -5, 0, 5, 10, 20, 30, 40, 50, 60, 70, 100};
-      binarySearch(vals, 100);
+      int[] vals = {37, 29, 19, 48, 23, 55, 74, 12};
+      selectionSort(vals);
+      System.out.println(Arrays.toString(vals));
    }
    
    public static void forwardDisplay(int [] primes) {
@@ -55,6 +54,23 @@ public class Temp {
             return middle;
       } 
       return -1; 
-   } 
+   }
 
+   public static void selectionSort(int [] a) {
+      int i,j;
+      int iMin;
+   
+      for (j = 0; j < a.length-1; j++) {
+         iMin = j;
+         for ( i = j+1; i < a.length; i++)
+            if (a[i] < a[iMin])
+               iMin = i;
+      
+         if(iMin != j) {
+            int tmp = a[j];
+            a[j] = a[iMin];
+            a[iMin] = tmp;
+         }
+      }
+   }
 }
