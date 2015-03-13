@@ -2,8 +2,10 @@ import java.util.Arrays;
 
 public class Temp {
    public static void main(String []  args) {
-      int[] vals = {37, 29, 19, 48, 23, 55, 74, 12};
-      selectionSort(vals);
+      int[] vals = new int [100];
+      for (int i = 0; i < 100; i++)
+         vals[i] = (int)(Math.random()*1000);         
+      insertionSort(vals);
       System.out.println(Arrays.toString(vals));
    }
    
@@ -71,6 +73,15 @@ public class Temp {
             a[j] = a[iMin];
             a[iMin] = tmp;
          }
+      }
+   }
+   
+   public static void insertionSort(int [] arr) {
+      for (int i = 1, x = arr[1]; i < arr.length; i++, x=arr[i<arr.length ? i : arr.length-1]) {
+         int j;
+         for (j = i; j > 0 && arr[j-1] > x; j--)
+            arr[j] = arr[j-1];
+         arr[j] = x;
       }
    }
 }
