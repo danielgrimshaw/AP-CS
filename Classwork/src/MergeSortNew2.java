@@ -8,7 +8,7 @@ public class MergeSortNew2
      
       // int nums[] = {22, 18, 12, -4, 27, 30, 36, 50, 7, 68, 91, 56, 2, 85, 42, 98, 25};   
       //int nums[] = {22, 18, 12, -4, 58, 7, 31, 43 };
-      int nums[] = {37, 29, 19, 48, 23, 55, 74, 12};
+      int nums[] = {15, 56, 24, 5, 39, -4, 27};
       System.out.println("Before merge sort: " + Arrays.toString(nums));
       mergeSort(nums);
       System.out.println("After merge sort: " + Arrays.toString(nums));
