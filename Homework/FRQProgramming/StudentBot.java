@@ -2,7 +2,7 @@ public class StudentBot extends ChatBot {
 	private String name;
 	
 	public StudentBot(String nm) {
-		this.name = nm;
+		super(nm);
 	}
 	
 	public String respondToGreeting(String greeting) {

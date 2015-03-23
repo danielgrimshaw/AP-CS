@@ -89,7 +89,7 @@ public class FloorPlan
     for (int i = 0; i < ROWS; i++)
 		for (int j = 0; j < COLS; j++)
 			if (this.fits(width, height, new Location(i, j)))
-				fits.add(new Location(i, j);
+				fits.add(new Location(i, j));
 	return fits;
   }
 
@@ -121,6 +121,6 @@ public class FloorPlan
     plan.room[7][7] = 1;
 
     System.out.println(plan.whereFits(4, 2));
-    System.out.println(plan.whereFits2(4, 2));
+    //System.out.println(plan.whereFits2(4, 2));
   }
 }

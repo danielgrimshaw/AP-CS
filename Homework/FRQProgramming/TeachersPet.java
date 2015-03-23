@@ -2,7 +2,7 @@ public class TeachersPet extends StudentBot {
 	private String name;
 	
 	public TeachersPet(String nm) {
-		this.name = nm;
+		super(nm);
 	}
 	
 	public String respondToGreeting(String greeting) {
