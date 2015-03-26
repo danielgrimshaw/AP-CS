@@ -1,5 +1,5 @@
 !1157;s
-J
+A
 SAU0PATH+=%<JGRASP_PATHS>%;\012PATH=+%;%<JGRASP_C_PATHS>\012CYGWIN=nodosfilewarning\012-Run\012ADD_EXE_PATH==Y\012
 SCU0PATH+=%<JGRASP_PATHS>%;\012PATH=+%;%<JGRASP_C_PATHS>\012CYGWIN=nodosfilewarning\012-Run\012ADD_EXE_PATH==Y\012
 S+U0PATH+=%<JGRASP_PATHS>%;\012PATH=+%;%<JGRASP_C_PATHS>\012CYGWIN=nodosfilewarning\012-Run\012ADD_EXE_PATH==Y\012
@@ -11,10 +11,14 @@ s#i0
 s#k0
 s#j0
 s#l0
-!92;u
-a1	b68	c255	f%\011GrimshawFloorPlan.jar	g%\011GrimshawFloorPlan.zip	hManifest-Version\0111.0!39;g
-%\011Location.java
-%\011FloorPlan.java
-!39;f
-%\011Location.java
-%\011FloorPlan.java
+!88;u
+a1	b68	c255	f%\011GrimshawChatbot.jar	g%\011GrimshawChatbot.zip	hManifest-Version\0111.0!81;g
+%\011ChatBot.java
+%\011Classroom.java
+%\011StudentBot.java
+%\011TeachersPet.java
+!81;f
+%\011ChatBot.java
+%\011Classroom.java
+%\011StudentBot.java
+%\011TeachersPet.java
