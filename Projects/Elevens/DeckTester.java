@@ -7,7 +7,7 @@ public class DeckTester {
 	 * The main method in this class checks the Deck operations for consistency.
 	 *	@param args is not used.
 	 */
-	public static void main(String[] args) {
+   public static void main(String[] args) {
       String [] ranks1 = {"A", "B", "C"};
       String [] ranks2 = {"Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"};
       String [] ranks3 = {};
@@ -17,7 +17,7 @@ public class DeckTester {
       int [] points1 = {2,1,6};
       int [] points2 = {14,2,3,4,5,6,7,8,9,10,11,12,13};
       int [] points3 = {};
-	   Deck [] decks = {new Deck(ranks1, suits1, points1), new Deck(ranks2, suits2, points2),
+      Deck [] decks = {new Deck(ranks1, suits1, points1), new Deck(ranks2, suits2, points2),
                        new Deck(ranks3, suits3, points3)};
       for (Deck deck : decks) {
          System.out.println(deck.size());
@@ -26,6 +26,10 @@ public class DeckTester {
          System.out.println(deck.size());
          System.out.println();
       }
-      System.out.println(Integer.MAX_VALUE);
-	}
+      
+      for (int i = 0; i < 10; i++) {
+         decks[1].shuffle();
+         System.out.println(decks[1]);
+      }
+   }
 }
