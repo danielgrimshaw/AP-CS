@@ -29,24 +29,24 @@ public class Card {
 
 
 	/**
-	 * Accesses this <code>Card's</code> suit.
-	 * @return this <code>Card's</code> suit.
+	 * Accesses this <code>Card</code>'s suit.
+	 * @return this <code>Card</code>'s suit.
 	 */
 	public String suit() {
 		return this.suit;
    }
 
 	/**
-	 * Accesses this <code>Card's</code> rank.
-	 * @return this <code>Card's</code> rank.
+	 * Accesses this <code>Card</code>'s rank.
+	 * @return this <code>Card</code>'s rank.
 	 */
 	public String rank() {
 		return this.rank;
 	}
 
    /**
-	 * Accesses this <code>Card's</code> point value.
-	 * @return this <code>Card's</code> point value.
+	 * Accesses this <code>Card</code>'s point value.
+	 * @return this <code>Card</code>'s point value.
 	 */
 	public int points() {
       return this.points;
