@@ -11,7 +11,8 @@ s#i0
 s#k0
 s#j0
 s#l0
-!190;g
+!88;u
+a1	b68	c255	f%\011GrimshawElevens.jar	g%\011GrimshawElevens.zip	hManifest-Version\0111.0!190;g
 %\011CardGameGUI.java
 %\011CardTester.java
 %\011Deck.java
@@ -33,5 +34,5 @@ s#l0
 %\011DeckTester.java
 %\011ElevensGUIRunner.java
 %\011Board.java
-!31;m
-RunSelect	APPLICATION:Shuffler
+!39;m
+RunSelect	APPLICATION:ElevensGUIRunner
