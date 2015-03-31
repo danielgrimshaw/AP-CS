@@ -66,6 +66,7 @@ public class Deck {
          cards.set(i, cards.get(r));
          cards.set(r, temp);
       }
+      this.size = cards.size();
    }
 
 	/**
@@ -74,10 +75,13 @@ public class Deck {
 	 *         previously dealt.
 	 */
    public Card deal() {
-      size--;
-      return cards.get(size);
+      if (size > 0) {
+         size--;
+         return cards.get(size);
+      }
+      return null;
    }
-
+   
 	/**
 	 * Generates and returns a string representation of this deck.
 	 * @return a string representation of this deck.
