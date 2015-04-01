@@ -54,9 +54,9 @@ public class ElevensBoard extends Board {
    @Override
    public boolean isLegal(List<Integer> selectedCards) {
       if (selectedCards.size() == 2)
-         return containsPairSum11(selectedCards);
+         return findPairSum11(selectedCards).size() > 0;
       else if (selectedCards.size() == 3)
-         return containsJQK(selectedCards);
+         return findJQK(selectedCards).size() > 0;
       else
          return false;
    }
@@ -72,7 +72,7 @@ public class ElevensBoard extends Board {
    @Override
    public boolean anotherPlayIsPossible() {
       List<Integer> indexes = this.cardIndexes();
-      return containsPairSum11(indexes) || containsJQK(indexes);
+      return findPairSum11(indexes).size() > 0 || findJQK(indexes).size() > 0;
    }
 
 	/**
@@ -93,6 +93,21 @@ public class ElevensBoard extends Board {
          }
       }
       return false;
+   }
+   
+   private List<Integer> findPairSum11(List<Integer> selectedCards) {
+      List<Integer> ret = new ArrayList<>(2);
+      for (int i = 0; i < selectedCards.size()-1; i++) {
+         ret.set(0, i);
+         Card card1 = cardAt(selectedCards.get(i));
+         for (int j = i+1; j < selectedCards.size(); j++) {
+            ret.set(1, j);
+            Card card2 = cardAt(selectedCards.get(j));
+            if (card1.points()+card2.points() == 11)
+               return ret;
+         }
+      }
+      return new ArrayList<Integer>();
    }
 
 	/**
@@ -118,5 +133,26 @@ public class ElevensBoard extends Board {
             }
       }
       return false;
+   }
+   
+   private List<Integer> findJQK(List<Integer> selectedCards) {
+      List<Integer> ret = new ArrayList<>(3);
+      for (int i = 0; i < selectedCards.size()-2; i++) {
+         ret.set(0, i);
+         Card card1 = cardAt(selectedCards.get(i));
+         if (card1.points() == 0) // rank is a jack, queen or king
+            for (int j = i+1; j < selectedCards.size()-1; j++) {
+               ret.set(1, j);
+               Card card2 = cardAt(selectedCards.get(j));
+               if (card2.points() == 0 && !(card1.rank().equals(card2.rank())))
+                  for (int k = j+1; k < selectedCards.size(); k++) {
+                     ret.set(2, k);
+                     Card card3 = cardAt(selectedCards.get(k));
+                     if (card3.points() == 0 && !(card1.rank().equals(card3.rank())) && !(card2.rank().equals(card3.rank())))
+                        return ret;
+                  }
+            }
+      }
+      return new ArrayList<Integer>();
    }
 }

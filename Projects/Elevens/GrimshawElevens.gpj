@@ -25,8 +25,8 @@ a1	b68	c255	f%\011GrimshawElevens.jar	g%\011GrimshawElevens.zip	hManifest-Versio
 %\011Activity5AssertionsCode%s
 %\011ThirteensGUIRunner.java
 %\011Board.java
-%\011CardTester.java
 %\011cards%s
+%\011CardTester.java
 %\011DeckTester.java
 !308;f
 %\011Shuffler.java
@@ -41,8 +41,8 @@ a1	b68	c255	f%\011GrimshawElevens.jar	g%\011GrimshawElevens.zip	hManifest-Versio
 %\011Activity5AssertionsCode%s
 %\011ThirteensGUIRunner.java
 %\011Board.java
-%\011CardTester.java
 %\011cards%s
+%\011CardTester.java
 %\011DeckTester.java
-!41;m
-RunSelect	APPLICATION:ThirteensGUIRunner
+!39;m
+RunSelect	APPLICATION:ElevensGUIRunner
